@@ -1,6 +1,6 @@
 import UIKit
 import Security
-
+// 2x2 Cube
 //            --- ---
 //           | 0 | 1 |
 //            -Back--
@@ -187,8 +187,7 @@ while !cubeSolved {
     rotateFrontAntiClockwise()
     rotateLeftSideUp()
     rotateBackClockwise()
-//    rotateRightSideDown()
-//    rotateFrontAntiClockwise()
+
     print(count)
     count += 4
     cubeSolved = checkCube()
