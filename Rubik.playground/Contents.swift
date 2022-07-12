@@ -1,111 +1,73 @@
 import UIKit
 import Security
 
-var cubeTop = [[String]]()
-var cubeFront = [[String]]()
-var cubeLeft = [[String]]()
-var cubeBack = [[String]]()
-var cubeRight = [[String]]()
-var cubeBottom = [[String]]()
+//            --- ---
+//           | 0 | 1 |
+//            -Back--
+//           | 2 | 4 |
+//    --- --- --- --- --- --- --- ---
+//   | 0 | 1 | 0 | 1 | 0 | 1 | 0 | 1 |
+//    -Left-- --Top-- -Right- --Bot--
+//   | 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 |
+//    --- --- --- --- --- --- --- ---
+//           | 0 | 1 |
+//            -Front-
+//           | 2 | 3 |
+//            --- ---
 
-var tmpCubeTop = [[String]]()
-var tmpCubeFront = [[String]]()
-var tmpCubeLeft = [[String]]()
-var tmpCubeBack = [[String]]()
-var tmpCubeRight = [[String]]()
-var tmpCubeBottom = [[String]]()
+
+var cubeTop = [String]()
+var cubeFront = [String]()
+var cubeLeft = [String]()
+var cubeBack = [String]()
+var cubeRight = [String]()
+var cubeBottom = [String]()
+
+var tmpCubeTop = [String]()
+var tmpCubeFront = [String]()
+var tmpCubeLeft = [String]()
+var tmpCubeBack = [String]()
+var tmpCubeRight = [String]()
+var tmpCubeBottom = [String]()
 
 
 func createCube() {
-    //    w, o, g, b, r y
-
-    var topRow1 = ["w", "w"]
-    var topRow2 = ["w", "w"]
-    var frontRow1 = ["o", "o"]
-    var frontRow2 = ["o", "o"]
-    var leftRow1 = ["b", "b"]
-    var leftRow2 = ["b", "b"]
-    var backRow1 = ["r", "r"]
-    var backRow2 = ["r", "r"]
-    var rightRow1 = ["g", "g"]
-    var rightRow2 = ["g", "g"]
-    var bottomRow1 = ["y", "y"]
-    var bottomRow2 = ["y", "y"]
-    
-    cubeTop.append(topRow1)
-    cubeTop.append(topRow2)
-    cubeFront.append(frontRow1)
-    cubeFront.append(frontRow2)
-    cubeLeft.append(leftRow1)
-    cubeLeft.append(leftRow2)
-    cubeBack.append(backRow1)
-    cubeBack.append(backRow2)
-    cubeRight.append(rightRow1)
-    cubeRight.append(rightRow2)
-    cubeBottom.append(bottomRow1)
-    cubeBottom.append(bottomRow2)
-
-    print(cubeTop)
-    print(cubeFront)
-    print(cubeLeft)
-    print(cubeBack)
-    print(cubeRight)
-    print(cubeBottom)
-
+    cubeTop = ["w", "w", "w", "w"]
+    cubeFront = ["o", "o", "o", "o"]
+    cubeLeft = ["b", "b", "b", "b"]
+    cubeBack = ["r", "r", "r", "r"]
+    cubeRight = ["g", "g", "g", "g"]
+    cubeBottom = ["y", "y", "y", "y"]
 }
 
 func createTmpCube() {
-    //    w, o, g, b, r y
-
-    var topRow1 = ["w", "w"]
-    var topRow2 = ["w", "w"]
-    var frontRow1 = ["o", "o"]
-    var frontRow2 = ["o", "o"]
-    var leftRow1 = ["b", "b"]
-    var leftRow2 = ["b", "b"]
-    var backRow1 = ["r", "r"]
-    var backRow2 = ["r", "r"]
-    var rightRow1 = ["g", "g"]
-    var rightRow2 = ["g", "g"]
-    var bottomRow1 = ["y", "y"]
-    var bottomRow2 = ["y", "y"]
-
-    tmpCubeTop.append(topRow1)
-    tmpCubeTop.append(topRow2)
-    tmpCubeFront.append(frontRow1)
-    tmpCubeFront.append(frontRow2)
-    tmpCubeLeft.append(leftRow1)
-    tmpCubeLeft.append(leftRow2)
-    tmpCubeBack.append(backRow1)
-    tmpCubeBack.append(backRow2)
-    tmpCubeRight.append(rightRow1)
-    tmpCubeRight.append(rightRow2)
-    tmpCubeBottom.append(bottomRow1)
-    tmpCubeBottom.append(bottomRow2)
+    tmpCubeTop = ["w", "w", "w", "w"]
+    tmpCubeFront = ["o", "o", "o", "o"]
+    tmpCubeLeft = ["b", "b", "b", "b"]
+    tmpCubeBack = ["r", "r", "r", "r"]
+    tmpCubeRight = ["g", "g", "g", "g"]
+    tmpCubeBottom = ["y", "y", "y", "y"]
 }
 
 func checkCube() -> Bool {
-    for row in Range(0...1) {
-        for col in Range(0...1) {
-            if cubeTop[row][col] != "w" {
-                return false
-            }
-            if cubeFront[row][col] != "o" {
-                return false
-            }
-            if cubeLeft[row][col] != "b" {
-                return false
-            }
-            if cubeBack[row][col] != "r" {
-                return false
-            }
-            if cubeRight[row][col] != "g" {
-                return false
-            }
-            if cubeBottom[row][col] != "y" {
-                return false
-            }
-
+    for square in Range(0...3) {
+        if cubeTop[square] != "w" {
+            return false
+        }
+        if cubeFront[square] != "o" {
+            return false
+        }
+        if cubeLeft[square] != "b" {
+            return false
+        }
+        if cubeBack[square] != "r" {
+            return false
+        }
+        if cubeRight[square] != "g" {
+            return false
+        }
+        if cubeBottom[square] != "y" {
+            return false
         }
     }
     return true
@@ -113,119 +75,101 @@ func checkCube() -> Bool {
 
 func printCube() {
     print("         --- ---                 ")
-    print("        | \(cubeTop[0][0]) | \(cubeTop[0][1]) | ")
+    print("        | \(cubeBack[0]) | \(cubeBack[1]) | ")
     print("         --- ---                 ")
-    print("        | \(cubeTop[1][0]) | \(cubeTop[1][1]) | ")
+    print("        | \(cubeBack[2]) | \(cubeBack[3]) | ")
     print(" --- --- --- --- --- --- --- --- ")
-    print("| \(cubeLeft[0][0]) | \(cubeLeft[0][1]) | \(cubeFront[0][0]) | \(cubeFront[0][1]) | \(cubeRight[0][0]) | \(cubeRight[0][1]) | \(cubeBack[0][0]) | \(cubeBack[0][1]) |")
+    print("| \(cubeLeft[0]) | \(cubeLeft[1]) | \(cubeTop[0]) | \(cubeTop[1]) | \(cubeRight[0]) | \(cubeRight[1]) | \(cubeBottom[0]) | \(cubeBottom[1]) |")
     print(" --- --- --- --- --- --- --- --- ")
-    print("| \(cubeLeft[1][0]) | \(cubeLeft[1][1]) | \(cubeFront[1][0]) | \(cubeFront[1][1]) | \(cubeRight[1][0]) | \(cubeRight[1][1]) | \(cubeBack[1][0]) | \(cubeBack[1][1]) |")
+    print("| \(cubeLeft[2]) | \(cubeLeft[3]) | \(cubeTop[2]) | \(cubeTop[3]) | \(cubeRight[2]) | \(cubeRight[3]) | \(cubeBottom[2]) | \(cubeBottom[3]) |")
     print(" --- --- --- --- --- --- --- --- ")
-    print("        | \(cubeBottom[0][0]) | \(cubeBottom[0][1]) | ")
+    print("        | \(cubeFront[0]) | \(cubeFront[1]) | ")
     print("         --- ---                 ")
-    print("        | \(cubeBottom[1][0]) | \(cubeBottom[1][1]) | ")
-    print("         --- ---                 ")
+    print("        | \(cubeFront[2]) | \(cubeFront[3]) | ")
+    print("         --- ---                 \n")
 }
 
 func copyTmpCubeToCube() {
-    cubeTop[0][0] = tmpCubeTop[0][0]
-    cubeTop[0][1] = tmpCubeTop[0][1]
-    cubeTop[1][0] = tmpCubeTop[1][0]
-    cubeTop[1][1] = tmpCubeTop[1][1]
-    cubeFront[0][0] = tmpCubeFront[0][0]
-    cubeFront[0][1] = tmpCubeFront[0][1]
-    cubeFront[1][0] = tmpCubeFront[1][0]
-    cubeFront[1][1] = tmpCubeFront[1][1]
-    cubeLeft[0][0] = tmpCubeLeft[0][0]
-    cubeLeft[0][1] = tmpCubeLeft[0][1]
-    cubeLeft[1][0] = tmpCubeLeft[1][0]
-    cubeLeft[1][1] = tmpCubeLeft[1][1]
-    cubeBack[0][0] = tmpCubeBack[0][0]
-    cubeBack[0][1] = tmpCubeBack[0][1]
-    cubeBack[1][0] = tmpCubeBack[1][0]
-    cubeBack[1][1] = tmpCubeBack[1][1]
-    cubeRight[0][0] = tmpCubeRight[0][0]
-    cubeRight[0][1] = tmpCubeRight[0][1]
-    cubeRight[1][0] = tmpCubeRight[1][0]
-    cubeRight[1][1] = tmpCubeRight[1][1]
-    cubeBottom[0][0] = tmpCubeBottom[0][0]
-    cubeBottom[0][1] = tmpCubeBottom[0][1]
-    cubeBottom[1][0] = tmpCubeBottom[1][0]
-    cubeBottom[1][1] = tmpCubeBottom[1][1]
+    cubeTop = tmpCubeTop
+    cubeFront = tmpCubeFront
+    cubeLeft = tmpCubeLeft
+    cubeBack = tmpCubeBack
+    cubeRight = tmpCubeRight
+    cubeBottom = tmpCubeBottom
 }
 
 func rotateRightSideDown() {
     //top <- back <- botton <- face <-top
-    tmpCubeTop[0][1] = cubeBack[0][0]
-    tmpCubeTop[1][1] = cubeBack[1][0]
-    tmpCubeBack[0][0] = cubeBottom[0][1]
-    tmpCubeBack[1][0] = cubeBottom[1][1]
-    tmpCubeBottom[0][1] = cubeFront[0][1]
-    tmpCubeBottom[1][1] = cubeFront[1][1]
-    tmpCubeFront[0][1] = cubeTop[0][1]
-    tmpCubeFront[1][1] = cubeTop[1][1]
+    tmpCubeTop[1] = cubeBack[1]
+    tmpCubeTop[3] = cubeBack[3]
+    tmpCubeBack[1] = cubeBottom[2]
+    tmpCubeBack[3] = cubeBottom[0]
+    tmpCubeBottom[2] = cubeFront[1]
+    tmpCubeBottom[0] = cubeFront[3]
+    tmpCubeFront[1] = cubeTop[1]
+    tmpCubeFront[3] = cubeTop[3]
     // rotate rightside
-    tmpCubeRight[0][0] = cubeRight[0][1]
-    tmpCubeRight[0][1] = cubeRight[1][1]
-    tmpCubeRight[1][0] = cubeRight[0][0]
-    tmpCubeRight[1][1] = cubeRight[1][0]
+    tmpCubeRight[0] = cubeRight[1]
+    tmpCubeRight[1] = cubeRight[3]
+    tmpCubeRight[2] = cubeRight[0]
+    tmpCubeRight[3] = cubeRight[2]
 
     copyTmpCubeToCube()
 }
 
 func rotateFrontAntiClockwise() {
     //top <- right <- botton <- left <-top
-    tmpCubeTop[1][0] = cubeRight[1][0]
-    tmpCubeTop[1][1] = cubeRight[1][1]
-    tmpCubeRight[1][0] = cubeBottom[0][0]
-    tmpCubeRight[1][1] = cubeBottom[0][1]
-    tmpCubeBottom[0][0] = cubeLeft[1][1]
-    tmpCubeBottom[0][1] = cubeLeft[1][0]
-    tmpCubeLeft[1][0] = cubeTop[1][0]
-    tmpCubeLeft[1][1] = cubeTop[1][1]
+    tmpCubeTop[2] = cubeRight[2]
+    tmpCubeTop[3] = cubeRight[3]
+    tmpCubeRight[2] = cubeBottom[2]
+    tmpCubeRight[3] = cubeBottom[3]
+    tmpCubeBottom[2] = cubeLeft[2]
+    tmpCubeBottom[3] = cubeLeft[3]
+    tmpCubeLeft[2] = cubeTop[2]
+    tmpCubeLeft[3] = cubeTop[3]
 
-    tmpCubeFront[0][0] = cubeFront[0][1]
-    tmpCubeFront[0][1] = cubeFront[1][1]
-    tmpCubeFront[1][0] = cubeFront[0][0]
-    tmpCubeFront[1][1] = cubeFront[1][0]
+    tmpCubeFront[0] = cubeFront[1]
+    tmpCubeFront[1] = cubeFront[3]
+    tmpCubeFront[2] = cubeFront[0]
+    tmpCubeFront[3] = cubeFront[2]
 
     copyTmpCubeToCube()
 }
 
 func rotateLeftSideUp() {
     //top <- front <- botton <- back <-top
-    tmpCubeTop[0][0] = cubeFront[0][0]
-    tmpCubeTop[1][0] = cubeFront[1][0]
-    tmpCubeFront[0][0] = cubeBottom[0][0]
-    tmpCubeFront[1][0] = cubeBottom[1][0]
-    tmpCubeBottom[0][0] = cubeBack[1][1]
-    tmpCubeBottom[1][0] = cubeBack[0][1]
-    tmpCubeBack[0][1] = cubeTop[1][0]
-    tmpCubeBack[1][1] = cubeTop[0][0]
+    tmpCubeTop[0] = cubeFront[0]
+    tmpCubeTop[2] = cubeFront[2]
+    tmpCubeFront[0] = cubeBottom[3]
+    tmpCubeFront[2] = cubeBottom[1]
+    tmpCubeBottom[3] = cubeBack[0]
+    tmpCubeBottom[1] = cubeBack[2]
+    tmpCubeBack[0] = cubeTop[0]
+    tmpCubeBack[2] = cubeTop[2]
     // rotate rightside
-    tmpCubeLeft[0][0] = cubeLeft[0][1]
-    tmpCubeLeft[0][1] = cubeLeft[1][1]
-    tmpCubeLeft[1][0] = cubeLeft[0][0]
-    tmpCubeLeft[1][1] = cubeLeft[1][0]
+    tmpCubeLeft[0] = cubeLeft[1]
+    tmpCubeLeft[1] = cubeLeft[3]
+    tmpCubeLeft[2] = cubeLeft[0]
+    tmpCubeLeft[3] = cubeLeft[2]
 
     copyTmpCubeToCube()
 }
 
 func rotateBackClockwise() {
     //top <- left <- botton <- right <-top
-    tmpCubeTop[0][0] = cubeLeft[0][0]
-    tmpCubeTop[0][1] = cubeLeft[0][1]
-    tmpCubeLeft[0][0] = cubeBottom[1][1]
-    tmpCubeLeft[0][1] = cubeBottom[1][0]
-    tmpCubeBottom[1][1] = cubeRight[0][0]
-    tmpCubeBottom[1][0] = cubeRight[0][1]
-    tmpCubeRight[0][0] = cubeTop[0][0]
-    tmpCubeRight[0][1] = cubeTop[0][1]
+    tmpCubeTop[0] = cubeLeft[0]
+    tmpCubeTop[1] = cubeLeft[1]
+    tmpCubeLeft[0] = cubeBottom[0]
+    tmpCubeLeft[1] = cubeBottom[1]
+    tmpCubeBottom[0] = cubeRight[0]
+    tmpCubeBottom[1] = cubeRight[1]
+    tmpCubeRight[0] = cubeTop[0]
+    tmpCubeRight[1] = cubeTop[1]
 
-    tmpCubeBack[0][0] = cubeBack[0][1]
-    tmpCubeBack[0][1] = cubeBack[1][1]
-    tmpCubeBack[1][0] = cubeBack[0][0]
-    tmpCubeBack[1][1] = cubeBack[1][0]
+    tmpCubeBack[0] = cubeBack[1]
+    tmpCubeBack[1] = cubeBack[3]
+    tmpCubeBack[2] = cubeBack[0]
+    tmpCubeBack[3] = cubeBack[2]
 
     copyTmpCubeToCube()
 }
@@ -237,17 +181,17 @@ createTmpCube()
 
 //move
 var count = 0
-var cobeSolved = false
-while !cobeSolved {
+var cubeSolved = false
+while !cubeSolved {
     rotateRightSideDown()
     rotateFrontAntiClockwise()
     rotateLeftSideUp()
     rotateBackClockwise()
+//    rotateRightSideDown()
+//    rotateFrontAntiClockwise()
     print(count)
-    printCube()
-    cobeSolved = checkCube()
-    count += 1
+    count += 4
+    cubeSolved = checkCube()
 }
 print(count)
-
 
