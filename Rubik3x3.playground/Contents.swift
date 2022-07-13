@@ -181,40 +181,64 @@ func rotateFrontAntiClockwise() {
 
 func rotateLeftSideUp() {
     //top <- front <- botton <- back <-top
-//    tmpCubeTop[0] = cubeFront[0]
-//    tmpCubeTop[2] = cubeFront[2]
-//    tmpCubeFront[0] = cubeBottom[3]
-//    tmpCubeFront[2] = cubeBottom[1]
-//    tmpCubeBottom[3] = cubeBack[0]
-//    tmpCubeBottom[1] = cubeBack[2]
-//    tmpCubeBack[0] = cubeTop[0]
-//    tmpCubeBack[2] = cubeTop[2]
-    // rotate rightside
-//    tmpCubeLeft[0] = cubeLeft[1]
-//    tmpCubeLeft[1] = cubeLeft[3]
-//    tmpCubeLeft[2] = cubeLeft[0]
-//    tmpCubeLeft[3] = cubeLeft[2]
+    tmpCubeTop[0] = cubeFront[0]
+    tmpCubeTop[3] = cubeFront[3]
+    tmpCubeTop[6] = cubeFront[6]
+    
+    tmpCubeFront[0] = cubeBottom[8]
+    tmpCubeFront[3] = cubeBottom[5]
+    tmpCubeFront[6] = cubeBottom[2]
+    
+    tmpCubeBottom[8] = cubeBack[0]
+    tmpCubeBottom[5] = cubeBack[3]
+    tmpCubeBottom[2] = cubeBack[6]
 
-//    copyTmpCubeToCube()
+    tmpCubeBack[0] = cubeTop[0]
+    tmpCubeBack[3] = cubeTop[3]
+    tmpCubeBack[6] = cubeTop[6]
+    // rotate rightside
+    tmpCubeLeft[0] = cubeLeft[2]
+    tmpCubeLeft[1] = cubeLeft[5]
+    tmpCubeLeft[2] = cubeLeft[8]
+    tmpCubeLeft[3] = cubeLeft[1]
+    tmpCubeLeft[4] = cubeLeft[4]
+    tmpCubeLeft[5] = cubeLeft[7]
+    tmpCubeLeft[6] = cubeLeft[0]
+    tmpCubeLeft[7] = cubeLeft[3]
+    tmpCubeLeft[8] = cubeLeft[6]
+
+    copyTmpCubeToCube()
 }
 
 func rotateBackClockwise() {
     //top <- left <- botton <- right <-top
-//    tmpCubeTop[0] = cubeLeft[0]
-//    tmpCubeTop[1] = cubeLeft[1]
-//    tmpCubeLeft[0] = cubeBottom[0]
-//    tmpCubeLeft[1] = cubeBottom[1]
-//    tmpCubeBottom[0] = cubeRight[0]
-//    tmpCubeBottom[1] = cubeRight[1]
-//    tmpCubeRight[0] = cubeTop[0]
-//    tmpCubeRight[1] = cubeTop[1]
+    tmpCubeTop[0] = cubeLeft[0]
+    tmpCubeTop[1] = cubeLeft[1]
+    tmpCubeTop[2] = cubeLeft[2]
 
-//    tmpCubeBack[0] = cubeBack[1]
-//    tmpCubeBack[1] = cubeBack[3]
-//    tmpCubeBack[2] = cubeBack[0]
-//    tmpCubeBack[3] = cubeBack[2]
+    tmpCubeLeft[0] = cubeBottom[0]
+    tmpCubeLeft[1] = cubeBottom[1]
+    tmpCubeLeft[2] = cubeBottom[2]
 
-//    copyTmpCubeToCube()
+    tmpCubeBottom[0] = cubeRight[0]
+    tmpCubeBottom[1] = cubeRight[1]
+    tmpCubeBottom[2] = cubeRight[2]
+
+    tmpCubeRight[0] = cubeTop[0]
+    tmpCubeRight[1] = cubeTop[1]
+    tmpCubeRight[2] = cubeTop[2]
+
+    tmpCubeBack[0] = cubeBack[2]
+    tmpCubeBack[1] = cubeBack[5]
+    tmpCubeBack[2] = cubeBack[8]
+    tmpCubeBack[3] = cubeBack[1]
+    tmpCubeBack[4] = cubeBack[4]
+    tmpCubeBack[5] = cubeBack[7]
+    tmpCubeBack[6] = cubeBack[0]
+    tmpCubeBack[7] = cubeBack[3]
+    tmpCubeBack[8] = cubeBack[6]
+
+    copyTmpCubeToCube()
 }
 
 createCube()
@@ -227,12 +251,12 @@ var count = 0
 var cubeSolved = false
 while !cubeSolved {
     rotateRightSideDown()
-    rotateFrontAntiClockwise()
+//    rotateFrontAntiClockwise()
 //    rotateLeftSideUp()
 //    rotateBackClockwise()
 
     print(count)
-    count += 1
+    count += 4
     cubeSolved = checkCube()
 }
 print(count)

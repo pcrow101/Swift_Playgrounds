@@ -184,12 +184,15 @@ var count = 0
 var cubeSolved = false
 while !cubeSolved {
     rotateRightSideDown()
+    count += 1
     rotateFrontAntiClockwise()
+    count += 1
     rotateLeftSideUp()
+    count += 1
     rotateBackClockwise()
+    count += 1
 
     print(count)
-    count += 4
     cubeSolved = checkCube()
 }
 print(count)
